@@ -204,13 +204,9 @@ def checkotp(request):
         ot = request.POST.get('otp')
         password = request.POST.get('password')
         againpassword = request.POST.get('confirmpassword')
-        if int(ot) != otp:
-            return redirect('check')
-        else:
-            for i in forgot.dataall.iterator():
-                data = resgister(id=i.id, email=forgot.email,
-                                 passwords=password)
-                data.save()
+        for i in forgot.dataall.iterator():
+            data = resgister(id=i.id, email=forgot.email,passwords=password)
+            data.save()
             messages.success(request, 'Chenge password succesfully')
             return redirect('logindata')
     return render(request, 'checkotp.html', {'data': email,'otpmain':forgot.otp})
