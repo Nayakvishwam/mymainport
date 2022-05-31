@@ -130,6 +130,8 @@ SERVER_EMAIL = 'ssky22170@gmail.com'
 ADMINS = [
         ('me', 'ssky22170@gmail.com'),
 ]
+MANAGERS = ADMINS
+
 STATIC_URL = '/static/'
 STATIC_ROOT= BASE_DIR / 'static'
 MEDIA_URL = "/media/"
