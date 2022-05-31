@@ -32,17 +32,14 @@ def contact(request):
         message = request.POST.get('message')
         data = ccontactme(name=name, email=email, message=message)
         data.save()
-        try:
             subject = f"Message by {name} and email is={email}"
-            send_mail(
+        send_mail(
                 subject,
                 f"{str(message)}",
                 email,
                 ['vishwamnayak88@gmail.com'],
                 fail_silently=False,
-            )
-        except Exception as p:
-            return HttpResponse('Connection lost check your connection connect your device and reload page again')
+         )
     return render(request, 'contact.html')
 
 
