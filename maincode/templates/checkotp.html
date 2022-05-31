@@ -154,6 +154,7 @@
                           message => alert(message)
                         );
                           tak.value=""
+                          break
         }
         }
         document.getElementById('submit').addEventListener('click', (w) => {
@@ -165,7 +166,7 @@
                 alert('Password and conform passwords are not same')
                 w.preventDefault()
             }
-            if(`${alldata}`==`${otp}`){
+            if(Number(alldata)==Number(otp){
 
             }
             else{
