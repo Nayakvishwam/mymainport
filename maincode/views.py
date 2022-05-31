@@ -32,14 +32,6 @@ def contact(request):
         message = request.POST.get('message')
         data = ccontactme(name=name, email=email, message=message)
         data.save()
-        subject = f"Message by {name} and email is={email}"
-        send_mail(
-                subject,
-                f"{str(message)}",
-                email,
-                ['vishwamnayak88@gmail.com'],
-                fail_silently=False,
-         )
     return render(request, 'contact.html')
 
 
