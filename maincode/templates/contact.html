@@ -193,18 +193,15 @@
                 e.preventDefault();
             }
             if(validname==True and validemail==True){
-                  Email.send({
-                        Host: "smtp.gmail.com",
-                        Username: "${namevalue}",
-                        Password: "Evn12345678",
-                        To: 'ssky22170@gmail.com',
-                        From: "${email.value}",
-                        Subject: "Sending Email using javascript",
-                        Body: "Well that was easy!!",
-                      })
-                        .then(function (message) {
-                          alert("mail sent successfully")
-                       });
+                       Email.send({
+                            SecureToken : "0a07bf8-a125-43ca-acaa-71c00f8d6ca3",
+                            To : 'vishwamnayak88@gmail.com',
+                            From : "vishwamnayak88@gmail.com",
+                            Subject : "This is the subject",
+                            Body : "And this is the body"
+                        }).then(
+                          message => alert(message)
+                        );
             }
         });
     </script>
