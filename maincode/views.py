@@ -213,4 +213,4 @@ def checkotp(request):
                 data.save()
             messages.success(request, 'Chenge password succesfully')
             return redirect('logindata')
-    return render(request, 'checkotp.html', {'data': email})
+    return render(request, 'checkotp.html', {'data': email,'otpmain':forgot.otp})
