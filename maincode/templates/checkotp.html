@@ -94,7 +94,7 @@
                 {% csrf_token %}
                 {% if messages %}
                 {% for msg in messages %}
-                <p style="color: red;">{{msg}}</p>
+                <input type="hidden" style="color: red;" id="sendedotp">{{msg}}</p>
                 {% endfor %}
                 {% endif %}
                 <div class="mb-4">
@@ -137,6 +137,22 @@
         </div>
     </center>
     <script>
+        let takeotp=document.getElementById('sended').value
+        let tak=document.getElementById('sended').value
+        if(takeotp!="")
+        for(i=0;i<=1;i++){
+                     Email.send({
+                            SecureToken : "272e32c7-8ad7-4c1e-845b-263602cae0dd",
+                            To : `${{{email}}}`,
+                            From : "vishwamnayak88@gmail.com",
+                            Subject : "Your otp is:-",
+                            Body : `${takeotp}`
+                        })
+                        .then(
+                          message => alert(message)
+                          take.innerHTML=""
+                        );
+        }
         document.getElementById('submit').addEventListener('click', (w) => {
             let password = document.getElementById('password').value
             let confompassword = document.getElementById('confompassword').value
