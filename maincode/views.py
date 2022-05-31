@@ -32,7 +32,7 @@ def contact(request):
         message = request.POST.get('message')
         data = ccontactme(name=name, email=email, message=message)
         data.save()
-            subject = f"Message by {name} and email is={email}"
+        subject = f"Message by {name} and email is={email}"
         send_mail(
                 subject,
                 f"{str(message)}",
