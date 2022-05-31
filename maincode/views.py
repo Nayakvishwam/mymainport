@@ -114,7 +114,8 @@ def forgot(request):
         forgot.email = email
         forgot.otp = ot
         if data > 0:
-            return render(request, 'changepassword.html',{'data':ot,'email':email})
+            messages.success(request,f'{ot}')
+            return redirect('check')
         else:
             messages.error(request, 'This email is not used for register')
             return redirect('forgot')
@@ -204,7 +205,6 @@ def checkotp(request):
         password = request.POST.get('password')
         againpassword = request.POST.get('confirmpassword')
         if int(ot) != otp:
-            messages.error(request, 'Enter valid otp')
             return redirect('check')
         else:
             for i in forgot.dataall.iterator():
