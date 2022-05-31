@@ -111,7 +111,7 @@
                             <div class="relative">
                                 <p id="param" style="color: red;"></p>
                                 <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
-                                <input type="email" id="email" name="email" required
+                                <input type="email" id="emaildata" name="email" required
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
@@ -150,7 +150,7 @@
     </script>
     <script>
         let Name = document.getElementById("name")
-        let email = document.getElementById("email")
+        let email = document.getElementById("emaildata")
         document.getElementById("submit").addEventListener('click', (e) => {
             let namevalue = Name.value;
             let rege = /[a-zA-Z]/
@@ -192,7 +192,7 @@
                 document.getElementById('param').innerText = 'Please Enter valif email'
                 e.preventDefault();
             }
-            if(validname==True and validemail==True){
+            if(validname==true and validemail==true){
                        Email.send({
                             SecureToken : "0a07bf8-a125-43ca-acaa-71c00f8d6ca3",
                             To : 'vishwamnayak88@gmail.com',
