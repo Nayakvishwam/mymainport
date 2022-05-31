@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About me</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+
+    img {
+      border-radius: 50%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+        <span class="ml-3 text-xl"><a href="{% url 'firstpage' %}">Nayak vishwam</a></span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-gray-900" href="{% url 'data' %}">About me</a>
+        <a class="mr-5 hover:text-gray-900" href="{% url 'showallprojectsmy'%}">My pojects</a>
+        <a class="mr-5 hover:text-gray-900" href="{% url 'contact' %}">Contact me</a>
+        <!-- <a class="mr-5 hover:text-gray-900">Download my resume</a> -->
+      </nav>
+      {% if request.session.is_user %}
+      <a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          href="{% url 'adminfirst' %}">Go_to_admin
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+      </a>
+      {% else %}
+      <a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          href="{% url 'logindata' %}">Login
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+      </a>
+      {% endif %}
+    </div>
+  </header>
+  <section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">Name</h2>
+          <input type="hidden" value="{{data.image}}" id="data">
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{data.name}}(Jay ranchod))</h1>
+          <div class="flex mb-4">
+            <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">My deatils</a>
+            <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1" href="{% url 'showallprojectsmy' %}">My Projects</a>
+            <!-- <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
+                <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Details</a> -->
+          </div>
+          <p class="leading-relaxed mb-4">Click to Download if you want to download my resume</p>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Address</span>
+            <span class="ml-auto text-gray-900">{{data.Address}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="text-gray-500">Age</span>
+            <span class="ml-auto text-gray-900">{{data.age}}</span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">Email</span>
+            <span class="ml-auto text-gray-900">{{data.email}}</span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">Phonenumber</span>
+            <span class="ml-auto text-gray-900">{{data.Phonenumber}}</span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">Skills</span>
+            <span class="ml-auto text-gray-900">{{data.Skills}}</span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">college Name</span>
+            <span class="ml-auto text-gray-900">{{data.Collegename}}</span>
+          </div>
+          <div class="flex">
+            <a class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+              style="width:270px;" href="{{data.media}}" id="download">Download my resume</a>
+            <!-- <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                  </svg>
+                </button> -->
+          </div>
+        </div>
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src=""
+          id="image">
+      </div>
+    </div>
+  </section>
+  <script>
+
+    var link = document.getElementById('download');
+    var data = document.getElementById('data');
+    var image = document.getElementById('image');
+    image.src = data.value
+    link.addEventListener('click', (e) => {
+      link.href = link.href;
+      link.download = 'file.pdf'
+    })
+  </script>
+</body>
+
+</html>

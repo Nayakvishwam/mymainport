@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new user</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+                <span class="ml-3 text-xl">Nayak vishwam</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adminfirst' %}">See contact details</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addprojects' %}">Add projects</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adddeatils' %}">Add my Details</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'shwomydata' %}">shwomydata</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'firstpage' %}">Go to our site</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addnew' %}">Add new account</a>
+            </nav>
+            <a href="{% url 'logout' %}"
+                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
+            <h3 class="text-2xl font-bold text-center">Add new user</h3>
+            <form action="{% url 'addnew' %}" method="post">
+                {% csrf_token %}
+                {% if messages %}
+                {% for msg in messages %}
+                <p style="color: red;">{{msg}}</p>
+                {% endfor %}
+                {% endif %}
+                <div class="mt-4">
+                    <div>
+                        <label class="block" for="Name">Name<label>
+                                <input type="text" placeholder="Name"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    name="name" required>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block" for="email">Email<label>
+                                <input type="text" placeholder="Email"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    name="email" required>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block">Password<label>
+                                <input type="password" placeholder="Password"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    name="pass" id="password" required>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block">Confirm Password<label>
+                                <input type="password" placeholder="Password"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    name="pass" id="passwordagain" required>
+                    </div>
+                    <span class="text-xs text-red-400" id="valid"></span>
+                    <div class="flex">
+                        <button class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
+                            id="submit">Create
+                            Account</button>
+                    </div>
+                    <!-- <div class="mt-6 text-grey-dark">
+                        Already have an account?
+                        <a class="text-blue-600 hover:underline" href="#">
+                            Log in
+                        </a>
+                    </div> -->
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('submit').addEventListener('click', (w) => {
+            let password = document.getElementById('password').value
+            let confompassword = document.getElementById('passwordagain').value
+            if (confompassword != password) {
+                alert('Password and conform passwords are not same')
+                data = document.getElementById('valid')
+                data.innerHTML = "Password must be same!"
+                w.preventDefault()
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showmydata(Jay ranchod)</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+                <span class="ml-3 text-xl">Nayak vishwam</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adminfirst' %}">See contact details</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addprojects' %}">Add projects</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adddeatils' %}">Add my Details</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'shwomydata' %}">shwomydata</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'firstpage' %}">Go to our site</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addnew' %}">Add new account</a>
+            </nav>
+            <a href="{% url 'logout' %}"
+                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <table class="min-w-full">
+                        <thead class="border-b">
+                            <tr>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    id
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Name
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Email
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Age
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Skills
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Phonenumber
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Collegename
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Address
+                                </th>
+
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    Delete
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            {% for j in i %}
+                            <tr class="border-b">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{j.id}}</td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.name}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.email}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.age}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.Skills}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.Phonenumber}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.Collegename}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{j.Address}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    <a class="text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4"
+                                        href="deleteone/{{j.id}}">Delete/{{j.id}}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

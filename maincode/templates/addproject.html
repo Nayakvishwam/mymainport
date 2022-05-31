@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add our projects(Jay ranchod)</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+                <span class="ml-3 text-xl">Nayak vishwam</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adminfirst' %}">See contact details</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addprojects' %}">Add projects</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adddeatils' %}">Add mydeatils</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'shwomydata' %}">shwomydata</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'firstpage' %}">Go to our site</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addnew' %}">Add new account</a>
+            </nav>
+            <a href="{% url 'logout' %}"
+                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+    <form method="post" action="{% url 'addprojects' %}">
+        {% csrf_token %}
+        <div class="mb-6">
+            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Add
+                technologies</label>
+            <textarea class="
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+            " id="exampleFormControlTextarea1" name="tech" rows="3" placeholder="Your Technologies"></textarea>
+
+        </div>
+        <div class="mb-6">
+            <label for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Heading</label>
+            <input type="text" id="base-input" name="title"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div>
+            <label for="small-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">link</label>
+            <input type="text" id="small-input" name="link"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <button type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+                <span class="ml-3 text-xl">Nayak vishwam</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adminfirst' %}">See contact details</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addprojects' %}">Add projects</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'adddeatils' %}">Add mydeatils</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'shwomydata' %}">shwomydata</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'firstpage' %}">Go to our site</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'addnew' %}">Add new account</a>
+            </nav>
+            <a href="{% url 'logout' %}"
+            class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </a>
+        </div>
+    </header>
+    <div class="bg-white p-10 sm:p-16">
+        <h2 class="font-medium mb-6 text-4xl text-gray-800">Add your details</h2> 
+        <form method="post" action="{% url 'adddeatils' %}" enctype="multipart/form-data"> 
+            {% csrf_token %}
+            <div data-pg-class-style="column_parent" class="flex flex-wrap -mx-4"> 
+                <div class="px-4 w-full md:w-6/12 lg:w-6/12"> 
+                    <div class="mb-6"> 
+                        <label class="block font-medium mb-2 text-gray-800" for="inputName">Name</label> 
+                        {{form.name}}                                                    
+                    </div>                                                 
+                </div>                                             
+                <div class="px-4 w-full md:w-6/12 lg:w-6/12">
+                    <div class="mb-6"> 
+                        <label class="block font-medium mb-2 text-gray-800" for="inputEmail">Email</label>  
+                        {{form.email}}                                                   
+                    </div>                                                 
+                </div>                                             
+            </div>    
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputSubject">Age</label>                                             
+                {{form.age}}
+            </div>                                     
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputSubject">Skills</label>   
+                {{form.Skills}}                                          
+            </div>
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputSubject">Phonenumber</label>    
+                {{form.Phonenumber}}                                         
+            </div>
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputSubject">college Name</label> 
+                {{form.Collegename}}                                            
+            </div>
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputSubject">Add resume</label>     
+                {{form.media}}
+            </div>
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputSubject">Add image</label>     
+                {{form.image}}
+            </div>
+            <div class="mb-6"> 
+                <label class="block font-medium mb-2 text-gray-800" for="inputMessage">Address</label>                                             
+                {{form.Address}}
+            </div>                                         
+            <div class="text-right">
+                <button type="submit" class="bg-blue-600 font-medium hover:bg-blue-700 inline-block px-6 py-2 text-center text-white uppercase">Submit
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 inline-block ml-1 w-4"> 
+                        <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path> 
+                    </svg>
+                </button>
+            </div>                                         
+        </form>                                     
+    </div>
+</body>
+
+</html>

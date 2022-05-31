@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact to Nayak vishwam (jay ranchod)</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+                <span class="ml-3 text-xl"><a href="{% url 'firstpage' %}">Nayak vishwam</a></span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{% url 'data' %}">About me</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'showallprojectsmy'%}">My pojects</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'contact' %}">Contact me</a>
+                <!-- <a class="mr-5 hover:text-gray-900">Download my resume</a> -->
+            </nav>
+            {% if request.session.is_user %}
+            <a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                href="{% url 'adminfirst' %}">Go_to_admin
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+            {% else %}
+            <a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                href="{% url 'logindata' %}">Login
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+    </header>
+    <section class="text-gray-600 body-font relative">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-12">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Me</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Ask with me anything as you wise.</p>
+            </div>
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <form action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -m-2">
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">
+                                    <p id="para" style="color: red;"></p>
+                                    Name
+                                </label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <p id="param" style="color: red;"></p>
+                                <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                                <textarea id="message" name="message" required
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <button type="submit"
+                                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                                style="width: 120px;" id="submit">Button</button>
+                        </div>
+                        <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+                            <h1 class="title">My emaild id:-<a class="text-indigo-500">vishwamnayak88@gmail.com</a></h1>
+                            <p class="leading-normal my-5">8/samrpan Tenament jantanagar crossing,
+                                <br>Ghatlodia, Ahmedabad
+                            </p>
+                            <span class="inline-flex">
+                                <a href="https://www.linkedin.com/feed/"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/vishwamnayak88/?hl=en" style="margin-left:20px;"><i
+                                        class="fa fa-instagram"></i></a>
+
+                            </span>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        console.log('Form validation');
+        let Name = document.getElementById("name")
+        document.getElementById("submit").addEventListener('click', (e) => {
+            console.log('no')
+            let namevalue = Name.value;
+            let rege = /[a-zA-Z]/
+            let rege3 = /[a-zA-Z][0-9]/
+            let rege4 = /[0-9][a-zA-Z]/
+            try {
+                if (Number(namevalue)) {
+                    document.getElementById('para').innerText = "Please No enter Numberices values only in name"
+                    validname = false
+                    e.preventDefault();
+
+                }
+            }
+            catch (error) { }
+            let rege2 = /[a-zA-Z]/
+            if (rege3.test(namevalue)) {
+                document.getElementById('para').innerText = 'Please No enter Numberices values only in name'
+                validname = false
+                e.preventDefault();
+            } else if (rege4.test(namevalue)) {
+                document.getElementById('para').innerText = 'Please No enter Numberices values only in name'
+                validname = false
+                e.preventDefault();
+            }
+            else if (rege2.test(namevalue)) {
+                validname = true
+                document.getElementById('para').innerText = ''
+            }
+            else {
+                validname = false
+                document.getElementById('para').innerText = 'Please Enter Name'
+                e.preventDefault();
+            }
+            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (regex.test(email.value)) {
+                validemail = true
+            } else {
+                validemail = false
+                document.getElementById('param').innerText = 'Please Enter valif email'
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

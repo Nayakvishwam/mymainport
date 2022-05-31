@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welocme to my first page (Jay ranchod)</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg> -->
+                <span class="ml-3 text-xl"><a href="{% url 'firstpage' %}">Nayak vishwam</a></span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{% url 'data' %}">About me</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'showallprojectsmy'%}">My pojects</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'contact' %}">Contact me</a>
+                <!-- <a class="mr-5 hover:text-gray-900">Download my resume</a> -->
+            </nav>
+            {% if request.session.is_user %}
+            <a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                href="{% url 'adminfirst' %}">Go_to_admin
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+            {% else %}
+            <a class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                href="{% url 'logindata' %}">Login
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="card" style="margin-top:200px;">
+        <center>
+            <img src="/media/WhatsApp Image 2022-05-08 at 5.33.00 PM.jpeg" alt="Avatar" style="width:200px">
+        </center>
+        <h1>Nayak vishwam</h1>
+        <p class="title">Software Developer</p>
+        <p>Study from Lj college of computer application which is semi Goverment , Gujarat,Ahmedabad, </p>
+        <a href="https://www.instagram.com/vishwamnayak88/?hl=en"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/feed/"><i class="fa fa-linkedin"></i></a>
+        <p>
+            <butt </body>
+
+</html>
