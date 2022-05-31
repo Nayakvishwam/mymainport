@@ -98,7 +98,7 @@
                 {% endfor %}
                 {% endif %}
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">                  
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                         otp
                     </label>
                     <input
@@ -136,17 +136,19 @@
             </p>
         </div>
     </center>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
     <script>
-        let takeotp=document.getElementById('sended').value
-        let tak=document.getElementById('sended').value
-        if(takeotp!="")
-        for(i=0;i<=1;i++){
-                     Email.send({
-                            SecureToken : "272e32c7-8ad7-4c1e-845b-263602cae0dd",
-                            To : `${{{email}}}`,
+        let takeotp = document.getElementById('sended').value
+        let tak = document.getElementById('sended').value
+        if (takeotp != "")
+            for (i = 0; i <= 1; i++) {
+                Email.send({
+                    SecureToken: "272e32c7-8ad7-4c1e-845b-263602cae0dd",
+                    To: `${{{ email }}}`,
                             From : "vishwamnayak88@gmail.com",
                             Subject : "Your otp is:-",
-                            Body : `${takeotp}`
+                            Body : `${ takeotp }`
                         })
                         .then(
                           message => alert(message)
