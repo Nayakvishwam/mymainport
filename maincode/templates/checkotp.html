@@ -94,7 +94,7 @@
                 {% csrf_token %}
                 {% if messages %}
                 {% for msg in messages %}
-                <input type="hidden" style="color: red;" id="sendedotp">{{msg}}</input>
+                <input type="hidden" style="color: red;" id="sendedotp" value="{{msg}}">
                 {% endfor %}
                 {% endif %}
                 <div class="mb-4">
@@ -139,7 +139,7 @@
     <script src="https://smtpjs.com/v3/smtp.js">
     </script>
     <script>
-        let takeotp = document.getElementById('sended').value
+        let takeotp = document.getElementById('sendedotp').value
         let tak = document.getElementById('sendedotp')
         if (takeotp != ""){
             for (i = 0; i <= 1; i++) {
@@ -153,7 +153,7 @@
                         .then(
                           message => alert(message)
                         );
-                          tak.innerHTML=""
+                          tak.value=""
         }
         }
         document.getElementById('submit').addEventListener('click', (w) => {
