@@ -146,20 +146,23 @@ def showallmydata(request):
 
 
 def addnew(request):
-    if request.POST:
-        email=request.POST.get('email')
-        password=request.POST.get('pass')
-        confirm=request.POST.get('cp')
-        name=request.POST.get('name')
-        if resgister.objects.filter(email=email).exists():
-            messages.error(request, 'email alrady using for register')
-            return redirect('addnew')
-        else:
-            data=resgister(name=name,email=email,passwords=password)
-            data.save()
-            messages.success(request, 'Register succesfully')
-            return redirect('logindata')
-    return render(request, 'addadmin.html')
+    if request.session.has_key("is_user"):
+        if request.POST:
+            email=request.POST.get('email')
+            password=request.POST.get('pass')
+            confirm=request.POST.get('cp')
+            name=request.POST.get('name')
+            if resgister.objects.filter(email=email).exists():
+                messages.error(request, 'email alrady using for register')
+                return redirect('addnew')
+            else:
+                data=resgister(name=name,email=email,passwords=password)
+                data.save()
+                messages.success(request, 'Register succesfully')
+                return redirect('logindata')
+        return render(request, 'addadmin.html')
+    else:
+        return redirect('/')
 
 
 def adminfirst(request):
@@ -207,6 +210,6 @@ def checkotp(request):
         for i in forgot.dataall.iterator():
             data = resgister(id=i.id, email=forgot.email,passwords=password)
             data.save()
-            messages.success(request, 'Chenge password succesfully')
+            messages.success(request, 'Change password succesfully')
             return redirect('logindata')
     return render(request, 'checkotp.html', {'data': email,'otpmain':forgot.otp})
