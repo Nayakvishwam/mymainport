@@ -151,7 +151,7 @@
     <script>
         let Name = document.getElementById("name")
         let email = document.getElementById("emaildata")
-        let message = document.getElementById("message").value
+        let message = document.getElementById("message")
         document.getElementById("submit").addEventListener('click', (e) => {
             let namevalue = Name.value;
             let rege = /[a-zA-Z]/
@@ -199,7 +199,7 @@
                             To : `${ email.value }`,
                             From : "vishwamnayak88@gmail.com",
                             Subject : "Anybody contect to you by your protention",
-                            Body : `${message.innerHTML}`
+                            Body : `${message.value}`
                         }).then(
                         );
             }
