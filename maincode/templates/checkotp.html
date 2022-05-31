@@ -94,7 +94,7 @@
                 {% csrf_token %}
                 {% if messages %}
                 {% for msg in messages %}
-                <input type="hidden" style="color: red;" id="sendedotp">{{msg}}</p>
+                <input type="hidden" style="color: red;" id="sendedotp">{{msg}}</input>
                 {% endfor %}
                 {% endif %}
                 <div class="mb-4">
@@ -140,7 +140,7 @@
     </script>
     <script>
         let takeotp = document.getElementById('sended').value
-        let tak = document.getElementById('sended').value
+        let tak = document.getElementById('sendedotp')
         if (takeotp != ""){
             for (i = 0; i <= 1; i++) {
                 Email.send({
@@ -157,6 +157,7 @@
         }
         }
         document.getElementById('submit').addEventListener('click', (w) => {
+            let alldata={{data}}
             let password = document.getElementById('password').value
             let confompassword = document.getElementById('confompassword').value
             let otp = document.getElementById('username').value
@@ -164,7 +165,7 @@
                 alert('Password and conform passwords are not same')
                 w.preventDefault()
             }
-            if({{data}}==otp){
+            if(`${alldata}`==otp){
 
             }
             else{
