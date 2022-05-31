@@ -151,6 +151,7 @@
     <script>
         let Name = document.getElementById("name")
         let email = document.getElementById("emaildata")
+        let message = document.getElementById("message").value
         document.getElementById("submit").addEventListener('click', (e) => {
             let namevalue = Name.value;
             let rege = /[a-zA-Z]/
@@ -195,12 +196,11 @@
             if(validname==true && validemail==true){
                        Email.send({
                             SecureToken : "272e32c7-8ad7-4c1e-845b-263602cae0dd",
-                            To : 'vishwamnayak88@gmail.com',
+                            To : `${ email.value }`,
                             From : "vishwamnayak88@gmail.com",
-                            Subject : "This is the subject",
-                            Body : "And this is the body"
+                            Subject : "Anybody contect to you by your protention",
+                            Body : `${message.value}`
                         }).then(
-                          message => alert(message)
                         );
             }
         });
