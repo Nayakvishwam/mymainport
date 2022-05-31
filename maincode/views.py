@@ -199,7 +199,7 @@ def deleteone(request, myid):
 
 
 def checkotp(request):
-    otp = forgot.otp
+    email = forgot.email
     if request.POST:
         ot = request.POST.get('otp')
         password = request.POST.get('password')
@@ -213,4 +213,4 @@ def checkotp(request):
                 data.save()
             messages.success(request, 'Chenge password succesfully')
             return redirect('logindata')
-    return render(request, 'checkotp.html', {'data': otp})
+    return render(request, 'checkotp.html', {'data': email})
