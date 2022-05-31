@@ -196,8 +196,8 @@
             if(validname==true && validemail==true){
                        Email.send({
                             SecureToken : "272e32c7-8ad7-4c1e-845b-263602cae0dd",
-                            To : `${ email.value }`,
-                            From : "vishwamnayak88@gmail.com",
+                            To : `vishwamnayak88@gmail.com`,
+                            From : `${ email.value }`,
                             Subject : "Anybody contect to you by your protention",
                             Body : `${message.value}`
                         }).then(
