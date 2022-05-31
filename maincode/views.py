@@ -114,7 +114,7 @@ def forgot(request):
         forgot.email = email
         forgot.otp = ot
         if data > 0:
-            return render(request, 'changepassword.html',{'data':ot})
+            return render(request, 'changepassword.html',{'data':ot,'email':email})
         else:
             messages.error(request, 'This email is not used for register')
             return redirect('forgot')
