@@ -43,5 +43,4 @@ virtualenvwrapper==4.8.4
 whitenoise==6.1.0
 zerosms==0.0.1
 static==1.0.2
-wsgiref==0.1.2
 waitress==2.1.2
