@@ -141,7 +141,7 @@
     <script>
         let takeotp = document.getElementById('sended').value
         let tak = document.getElementById('sended').value
-        if (takeotp != "")
+        if (takeotp != ""){
             for (i = 0; i <= 1; i++) {
                 Email.send({
                     SecureToken: "272e32c7-8ad7-4c1e-845b-263602cae0dd",
@@ -152,8 +152,9 @@
                         })
                         .then(
                           message => alert(message)
-                          take.innerHTML=""
                         );
+                          tak.innerHTML=""
+        }
         }
         document.getElementById('submit').addEventListener('click', (w) => {
             let password = document.getElementById('password').value
