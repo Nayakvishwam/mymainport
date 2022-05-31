@@ -126,6 +126,10 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "ssky22170@gmail.com"
 EMAIL_HOST_PASSWORD = "vn12345678"
+SERVER_EMAIL = 'ssky22170@gmail.com'
+ADMINS = [
+        ('me', 'ssky22170@gmail.com'),
+]
 STATIC_URL = '/static/'
 STATIC_ROOT= BASE_DIR / 'static'
 MEDIA_URL = "/media/"
