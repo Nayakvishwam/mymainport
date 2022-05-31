@@ -145,11 +145,13 @@
             </div>
         </div>
     </section>
+    <script src=
+    "https://smtpjs.com/v3/smtp.js">
+    </script>
     <script>
-        console.log('Form validation');
         let Name = document.getElementById("name")
+        let email = document.getElementById("email")
         document.getElementById("submit").addEventListener('click', (e) => {
-            console.log('no')
             let namevalue = Name.value;
             let rege = /[a-zA-Z]/
             let rege3 = /[a-zA-Z][0-9]/
@@ -189,6 +191,20 @@
                 validemail = false
                 document.getElementById('param').innerText = 'Please Enter valif email'
                 e.preventDefault();
+            }
+            if(validname==True and validemail==True){
+                  Email.send({
+                        Host: "smtp.gmail.com",
+                        Username: "${namevalue}",
+                        Password: "Enter your password",
+                        To: '${vishwamnayak88@gmail.com}',
+                        From: "${email.value}",
+                        Subject: "Sending Email using javascript",
+                        Body: "Well that was easy!!",
+                      })
+                        .then(function (message) {
+                          alert("mail sent successfully")
+                       });
             }
         });
     </script>
