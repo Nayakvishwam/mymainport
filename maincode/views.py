@@ -114,15 +114,7 @@ def forgot(request):
         forgot.email = email
         forgot.otp = ot
         if data > 0:
-            email_from = settings.EMAIL_HOST_USER
-            send_mail(
-                "check otp",
-                f"Your OTP is {str(ot)}",
-                email_from,
-                [email, ],
-                fail_silently=False,
-            )
-            return redirect('check')
+            return render(request, 'changepassword.html',{'data':ot})
         else:
             messages.error(request, 'This email is not used for register')
             return redirect('forgot')
